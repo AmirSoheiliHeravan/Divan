@@ -37,6 +37,7 @@ class SettingsRepo(private val store: DataStore<Preferences>) {
         val warnThreshold = longPreferencesKey("warn_threshold")    // percent
         val fontScale = longPreferencesKey("font_scale")            // percent: 90|100|115|130
         val fiscalStartMonth = longPreferencesKey("fiscal_start_month") // 1..12 — شروع سال مالی
+        val cloudTreeUri = stringPreferencesKey("cloud_tree_uri")   // پوشه پشتیبان ابری (Drive/SAF)
     }
 
     val languageCode: Flow<String> = store.data.map { it[K.language] ?: "system" }
@@ -96,6 +97,10 @@ class SettingsRepo(private val store: DataStore<Preferences>) {
     suspend fun setFontScale(v: Float) = store.edit { it[K.fontScale] = (v * 100).toLong() }
     suspend fun setFiscalStartMonth(v: Int) = store.edit { it[K.fiscalStartMonth] = v.toLong() }
     suspend fun fiscalStartMonthNow(): Int = store.data.first()[K.fiscalStartMonth]?.toInt() ?: 1
+
+    val cloudTreeUriFlow: Flow<String> = store.data.map { it[K.cloudTreeUri] ?: "" }
+    suspend fun cloudTreeUriNow(): String = store.data.first()[K.cloudTreeUri] ?: ""
+    suspend fun setCloudTreeUri(v: String) = store.edit { it[K.cloudTreeUri] = v }
 
     suspend fun setPin(hash: String, salt: String) = store.edit {
         it[K.pinHash] = hash; it[K.pinSalt] = salt

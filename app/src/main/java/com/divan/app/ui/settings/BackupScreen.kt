@@ -78,11 +78,26 @@ fun BackupScreen(nav: NavHostController) {
                 val raw = withContext(Dispatchers.IO) {
                     ctx.contentResolver.openInputStream(uri)?.use { it.readBytes().toString(Charsets.UTF_8) } ?: ""
                 }
-                val plain = if (raw.startsWith("KM1:")) {
+                val plain = if (raw.startsWith("DV1:") || raw.startsWith("KM1:")) {
                     if (password.isBlank()) { status = "این فایل رمزگذاری شده – رمز را وارد کنید"; return@launch }
                     bm.decrypt(raw, password) ?: run { status = "رمز اشتباه است یا فایل خراب است"; return@launch }
                 } else raw
                 status = if (bm.restore(plain)) "بازیابی کامل شد ✔" else "بازیابی ناموفق بود"
+            }
+        }
+    }
+    // پشتیبان ابری (Poolaki): انتخاب پوشه Google Drive / OneDrive از SAF + نوشتن خودکار پشتیبان همان‌جا
+    val treePicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri: Uri? ->
+        if (uri != null) {
+            runCatching {
+                ctx.contentResolver.takePersistableUriPermission(
+                    uri,
+                    android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION or android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION,
+                )
+            }
+            scope.launch {
+                ServiceLocator.settings.setCloudTreeUri(uri.toString())
+                status = "پوشه ابری انتخاب شد ✔ (پشتیبان خودکار شبانه فعال شد)"
             }
         }
     }
@@ -116,6 +131,43 @@ fun BackupScreen(nav: NavHostController) {
             Text("خروجی تراکنش‌های ۵ سال اخیر با سازگاری کامل فارسی در اکسل", fontSize = 12.sp)
             Spacer(Modifier.height(6.dp))
             Button(onClick = { csvLauncher.launch("divan_transactions.csv") }) { Text("خروجی CSV") }
+        }
+        Spacer(Modifier.height(10.dp))
+        SectionCard(title = "☁️ پشتیبان ابری (Google Drive / OneDrive)") {
+            Text(
+                "یک پوشه ابری انتخاب کنید؛ پشتیبان کامل هر شب خودکار همان‌جا نوشته می‌شود و از هر دستگاهی قابل بازیابی است.",
+                fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(Modifier.height(6.dp))
+            Row {
+                Button(onClick = { treePicker.launch(null) }) { Text("انتخاب پوشه ابری") }
+                Spacer(Modifier.padding(6.dp))
+                Button(onClick = {
+                    scope.launch {
+                        val treeStr = ServiceLocator.settings.cloudTreeUriNow()
+                        if (treeStr.isBlank()) {
+                            status = "اول پوشه ابری را انتخاب کنید"
+                            return@launch
+                        }
+                        val bm = ServiceLocator.backup
+                        val plain = bm.serializeBackup()
+                        val data = if (password.isNotBlank()) bm.encrypt(plain, password) else plain
+                        val ok = withContext(Dispatchers.IO) {
+                            runCatching {
+                                val tree = Uri.parse(treeStr)
+                                val root = android.provider.DocumentsContract
+                                    .buildDocumentUriUsingTree(tree, android.provider.DocumentsContract.getTreeDocumentId(tree))
+                                val newDoc = android.provider.DocumentsContract
+                                    .createDocument(ctx.contentResolver, root, "application/json", bm.backupFileName())
+                                if (newDoc != null) {
+                                    ctx.contentResolver.openOutputStream(newDoc)?.use { it.write(data.toByteArray(Charsets.UTF_8)) } != null
+                                } else false
+                            }.getOrDefault(false)
+                        }
+                        status = if (ok) "پشتیبان در پوشه ابری ذخیره شد ✔" else "ذخیره ابری ناموفق بود — دسترسی پوشه را دوباره بدهید"
+                    }
+                }) { Text("پشتیبان‌گیری ابری اکنون") }
+            }
         }
         if (status.isNotEmpty()) {
             Spacer(Modifier.height(8.dp))

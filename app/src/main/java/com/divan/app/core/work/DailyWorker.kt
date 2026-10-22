@@ -66,6 +66,21 @@ class DailyWorker(appContext: Context, params: WorkerParameters) :
             // 6) به‌روزرسانی روزانه نرخ‌های زنده (tgju.org + estjt.ir)
             runCatching { sl.rates.refresh() }
 
+            // 7) پشتیبان ابری خودکار — اگر پوشه Drive/SAF انتخاب شده باشد (Poolaki)
+            runCatching {
+                val treeStr = sl.settings.cloudTreeUriNow()
+                if (treeStr.isNotBlank()) {
+                    val tree = android.net.Uri.parse(treeStr)
+                    val root = android.provider.DocumentsContract
+                        .buildDocumentUriUsingTree(tree, android.provider.DocumentsContract.getTreeDocumentId(tree))
+                    val data = sl.backup.serializeBackup()
+                    val cr = ctx.contentResolver
+                    val newDoc = android.provider.DocumentsContract
+                        .createDocument(cr, root, "application/json", sl.backup.backupFileName())
+                    newDoc?.let { cr.openOutputStream(it)?.use { os -> os.write(data.toByteArray(Charsets.UTF_8)) } }
+                }
+            }
+
             WidgetUpdater.requestUpdateAll()
             Result.success()
         }.getOrElse {

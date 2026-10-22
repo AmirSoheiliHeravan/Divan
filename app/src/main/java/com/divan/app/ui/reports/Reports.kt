@@ -21,7 +21,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -62,6 +65,9 @@ fun ReportsScreen(nav: NavHostController) {
     var monthly by remember { mutableStateOf(listOf<Pair<String, Double>>()) }
     var memberPerf by remember { mutableStateOf(listOf<Triple<String, Int, Long>>()) }
     var trial by remember { mutableStateOf(listOf<Triple<String, Long, Long>>()) }
+    val ctx = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var pdfStatus by remember { mutableStateOf("") }
 
     LaunchedEffect(period, memberFilter) {
         com.divan.app.ui.common.UiCtx.refresh()
@@ -235,11 +241,60 @@ fun ReportsScreen(nav: NavHostController) {
         }
         item {
             SectionCard(title = "خروجی و ابزار") {
+                TextButton(onClick = {
+                    scope.launch {
+                        pdfStatus = "در حال ساخت PDF…"
+                        val code = base?.code ?: "IRR"
+                        val summary = listOf(
+                            "درآمد بازه" to fmtMoney(totals.income, code),
+                            "هزینه بازه" to fmtMoney(totals.expense, code),
+                            "مانده" to fmtMoney(totals.net, code),
+                        )
+                        val catRows = catSums.entries.sortedByDescending { it.value }.take(10)
+                            .map { com.divan.app.core.backup.PdfExporter.Line(catNames[it.key] ?: "—", fmtMoney(it.value, code)) }
+                        val trialRows = trial.map {
+                            com.divan.app.core.backup.PdfExporter.Line(
+                                it.first,
+                                "دریافت: ${fmtMoney(it.second, code)} · پرداخت: ${fmtMoney(it.third, code)}",
+                            )
+                        }
+                        val memberRows = memberPerf.map {
+                            com.divan.app.core.backup.PdfExporter.Line("${it.first} (${it.second} مورد)", fmtMoney(it.third, code))
+                        }
+                        val sections = buildList {
+                            add("ترکیب هزینه بر اساس دسته‌بندی" to catRows)
+                            if (trialRows.isNotEmpty()) add("ترازنامه آزمایشی (جریان هر حساب)" to trialRows)
+                            if (memberRows.isNotEmpty()) add("عملکرد اشخاص و اعضا" to memberRows)
+                        }
+                        val file = com.divan.app.core.backup.PdfExporter.export(
+                            ctx, "دیوان — گزارش مالی", "بازه: ${period.label} · ارز پایه: $code", summary, sections,
+                        )
+                        if (file != null) {
+                            sharePdf(ctx, file)
+                            pdfStatus = "PDF آماده شد ✔ (اشتراک‌گذاری یا Downloads)"
+                        } else pdfStatus = "ساخت PDF ناموفق بود"
+                    }
+                }) { Text("🖨 خروجی PDF گزارش") }
+                if (pdfStatus.isNotEmpty()) {
+                    Text(pdfStatus, fontSize = 11.sp, color = MaterialTheme.colorScheme.primary)
+                }
                 TextButton(onClick = { exportCsv(nav) }) { Text("📄 خروجی CSV تراکنش‌های بازه") }
                 TextButton(onClick = { nav.navigate(com.divan.app.ui.nav.Routes.FAMILY) }) { Text("👨‍👩‍👧 گزارش اعضای خانواده") }
                 TextButton(onClick = { WorkScheduler.triggerSyncNow(ServiceLocator.context()) }) { Text("🔄 تلاش برای همگام‌سازی") }
             }
         }
+    }
+}
+
+private fun sharePdf(context: android.content.Context, file: java.io.File) {
+    runCatching {
+        val uri = androidx.core.content.FileProvider.getUriForFile(context, context.packageName + ".fileprovider", file)
+        val send = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+            type = "application/pdf"
+            putExtra(android.content.Intent.EXTRA_STREAM, uri)
+            addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        context.startActivity(android.content.Intent.createChooser(send, "اشتراک‌گذاری گزارش PDF"))
     }
 }
 

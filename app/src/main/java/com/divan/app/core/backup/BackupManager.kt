@@ -85,14 +85,15 @@ class BackupManager(
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")
         cipher.init(Cipher.ENCRYPT_MODE, SecretKeySpec(key, "AES"), IvParameterSpec(iv))
         val ct = cipher.doFinal(plain.toByteArray(Charsets.UTF_8))
-        val out = "KM1:" + Base64.encode(salt) + ":" + Base64.encode(iv) + ":" + Base64.encode(ct)
+        val out = "DV1:" + Base64.encode(salt) + ":" + Base64.encode(iv) + ":" + Base64.encode(ct)
         return out
     }
 
     fun decrypt(data: String, password: String): String? {
         return runCatching {
             val parts = data.trim().split(":")
-            if (parts.size != 4 || parts[0] != "KM1") return@runCatching null
+            // هم فرمت جدید (DV1) و هم فایل‌های قدیمی‌تر (KM1) خوانده می‌شوند
+            if (parts.size != 4 || (parts[0] != "DV1" && parts[0] != "KM1")) return@runCatching null
             val salt = Base64.decode(parts[1])
             val iv = Base64.decode(parts[2])
             val ct = Base64.decode(parts[3])
