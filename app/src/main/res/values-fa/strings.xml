@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">دیوان</string>
+    <string name="wear_app_name">دیوان</string>
+
+    <string name="widget_quick_expense">ثبت سریع</string>
+    <string name="widget_quick_expense_desc">ثبت هزینه / درآمد / انتقال از صفحه اصلی</string>
+    <string name="widget_balance">موجودی</string>
+    <string name="widget_balance_desc">موجودی کل و خلاصه ماه</string>
+
+    <string name="notif_sms_title">تراکنش بانکی شناسایی شد</string>
+
+    <string name="wiz_welcome">خوش آمدید</string>
+    <string name="wiz_lang">زبان</string>
+    <string name="wiz_currency">ارز</string>
+    <string name="wiz_family">خانواده</string>
+    <string name="wiz_account">اولین حساب</string>
+    <string name="wiz_categories">دسته‌بندی‌ها</string>
+    <string name="wiz_permissions">دسترسی‌ها</string>
+    <string name="wiz_security">امنیت</string>
+    <string name="wiz_done">آماده است</string>
+    <string name="wiz_welcome_text">حسابدار شخصی و خانوادگی شما. همه‌چیز آفلاین کار می‌کند و صف همگام‌سازی امن برای سرور آینده آماده است.</string>
+    <string name="wiz_lang_text">زبان رابط کاربری را انتخاب کنید (هر زمان از تنظیمات قابل تغییر است).</string>
+    <string name="wiz_currency_text">ارز پایه را انتخاب کنید. نرخ‌ها دستی ثبت می‌شوند و نرخ تاریخی هر تراکنش ثابت می‌ماند.</string>
+    <string name="wiz_currency_hint">بعداً می‌توانید بی‌نهایت ارز سفارشی اضافه کنید.</string>
+    <string name="wiz_categories_text">دسته‌بندی‌های گسترده زندگی از قبل بارگذاری شده‌اند. موارد لازم را تیک بزنید.</string>
+    <string name="wiz_security_text">اختیاری: برنامه را با رمز PIN محافظت کنید. زیست‌سنجی بعداً در تنظیمات فعال می‌شود.</string>
+    <string name="wiz_done_text">همه‌چیز آماده است! از تنظیمات می‌توانید همه موارد را تغییر دهید.</string>
+    <string name="wiz_done_note">نکته: قواعد پیامک بانک‌های ایرانی از قبل تعریف شده و کاملاً قابل ویرایش‌اند.</string>
+
+    <string name="back">قبلی</string>
+    <string name="next">بعدی</string>
+    <string name="skip">رد کردن</string>
+    <string name="finish">شروع برنامه</string>
+    <string name="add">افزودن</string>
+    <string name="granted">داده شد</string>
+    <string name="allow">اجازه دادن</string>
+    <string name="open_settings">تنظیمات برنامه</string>
+
+    <string name="family_name">نام خانواده</string>
+    <string name="add_member">افزودن عضو</string>
+    <string name="role_owner">مالک</string>
+    <string name="role_admin">مدیر</string>
+    <string name="role_finance">مدیر مالی</string>
+    <string name="role_readonly">فقط‌خواندنی</string>
+    <string name="role_member">عضو</string>
+    <string name="acc_name">نام حساب</string>
+    <string name="acc_type">نوع حساب</string>
+    <string name="acc_cash">نقد</string>
+    <string name="acc_bank">بانکی</string>
+    <string name="acc_card">کارت</string>
+    <string name="acc_card_last4">۴ رقم آخر کارت</string>
+    <string name="opening_balance">موجودی افتتاحیه</string>
+
+    <string name="perm_sms_title">خواندن پیامک بانک‌ها</string>
+    <string name="perm_sms_desc">واریز و برداشت بانک‌های ایرانی را خودکار تشخیص می‌دهد. قواعد قابل ویرایش‌اند و هر بانک از هر کشوری قابل افزودن است.</string>
+    <string name="perm_cal_title">سینک تقویم</string>
+    <string name="perm_cal_desc">سررسید اقساط، چک‌ها و پرداخت‌های دوره‌ای را در تقویم گوشی ثبت می‌کند.</string>
+    <string name="perm_contacts_title">مخاطبین</string>
+    <string name="perm_contacts_desc">اتصال طرف‌حساب‌ها (اشخاص/فروشگاه‌ها) به مخاطبین گوشی.</string>
+
+    <string name="pin_new">رمز جدید (۴ تا ۸ رقم)</string>
+    <string name="pin_repeat">تکرار رمز</string>
+    <string name="pin_save">ذخیره رمز</string>
+    <string name="pin_saved">رمز ذخیره شد ✔</string>
+    <string name="pin_mismatch">رمزها یکسان نیستند</string>
+</resources>

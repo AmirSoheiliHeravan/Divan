@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_dark">#1B4D3E</color>
+    <color name="primary">#2E7D5B</color>
+    <color name="accent_gold">#D9B25F</color>
+    <color name="white">#FFFFFF</color>
+    <color name="ic_launcher_background">#1B4D3E</color>
+    <color name="widget_bg">#0F3D2E</color>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Divan</string>
+    <string name="wear_app_name" translatable="false">Divan</string>
+
+    <!-- Widgets -->
+    <string name="widget_quick_expense">Quick entry</string>
+    <string name="widget_quick_expense_desc">Add expense / income / transfer from home screen</string>
+    <string name="widget_balance">Balance</string>
+    <string name="widget_balance_desc">Total balance and this month summary</string>
+
+    <!-- Notifications -->
+    <string name="notif_sms_title">Bank transaction detected</string>
+
+    <!-- Wizard -->
+    <string name="wiz_welcome">Welcome</string>
+    <string name="wiz_lang">Language</string>
+    <string name="wiz_currency">Currency</string>
+    <string name="wiz_family">Family</string>
+    <string name="wiz_account">First account</string>
+    <string name="wiz_categories">Categories</string>
+    <string name="wiz_permissions">Permissions</string>
+    <string name="wiz_security">Security</string>
+    <string name="wiz_done">Ready</string>
+    <string name="wiz_welcome_text">Your personal &amp; family accountant. Everything works offline first; a secure sync queue is ready for your future server.</string>
+    <string name="wiz_lang_text">Choose your interface language (changeable anytime in Settings).</string>
+    <string name="wiz_currency_text">Pick your base currency. Exchange rates are manual and every transaction keeps its historical rate.</string>
+    <string name="wiz_currency_hint">You can add unlimited currencies later.</string>
+    <string name="wiz_categories_text">Extensive lifestyle categories are preloaded. Uncheck what you don\'t need.</string>
+    <string name="wiz_security_text">Optional: protect the app with a PIN. Biometric unlock can be enabled later.</string>
+    <string name="wiz_done_text">All set! Everything is editable later from Settings.</string>
+    <string name="wiz_done_note">Tip: Iranian bank SMS rules are built-in and fully editable.</string>
+
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="finish">Finish</string>
+    <string name="add">Add</string>
+    <string name="granted">Granted</string>
+    <string name="allow">Allow</string>
+    <string name="open_settings">App settings</string>
+
+    <!-- Wizard family / account -->
+    <string name="family_name">Family name</string>
+    <string name="add_member">Add member</string>
+    <string name="role_owner">Owner</string>
+    <string name="role_admin">Admin</string>
+    <string name="role_finance">Finance manager</string>
+    <string name="role_readonly">Read only</string>
+    <string name="role_member">Member</string>
+    <string name="acc_name">Account name</string>
+    <string name="acc_type">Account type</string>
+    <string name="acc_cash">Cash</string>
+    <string name="acc_bank">Bank</string>
+    <string name="acc_card">Card</string>
+    <string name="acc_card_last4">Last 4 digits of card</string>
+    <string name="opening_balance">Opening balance</string>
+
+    <!-- Permissions -->
+    <string name="perm_sms_title">Bank SMS reading</string>
+    <string name="perm_sms_desc">Automatically detects deposits/withdrawals from Iranian banks. Rules are editable; add any bank from any country.</string>
+    <string name="perm_cal_title">Calendar sync</string>
+    <string name="perm_cal_desc">Writes installment, cheque and recurring due-dates to the OS calendar.</string>
+    <string name="perm_contacts_title">Contacts</string>
+    <string name="perm_contacts_desc">Link counterparties (people/shops) to phone contacts.</string>
+
+    <!-- Security -->
+    <string name="pin_new">New PIN (4–8 digits)</string>
+    <string name="pin_repeat">Repeat PIN</string>
+    <string name="pin_save">Save PIN</string>
+    <string name="pin_saved">PIN saved ✔</string>
+    <string name="pin_mismatch">PINs do not match</string>
+</resources>

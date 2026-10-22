@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Divan</string>
+
+    <string name="widget_quick_expense">Schnellerfassung</string>
+    <string name="widget_quick_expense_desc">Ausgabe / Einnahme / Überweisung vom Startbildschirm</string>
+    <string name="widget_balance">Guthaben</string>
+    <string name="widget_balance_desc">Gesamtguthaben und Monatsübersicht</string>
+
+    <string name="notif_sms_title">Banktransaktion erkannt</string>
+
+    <string name="wiz_welcome">Willkommen</string>
+    <string name="wiz_lang">Sprache</string>
+    <string name="wiz_currency">Währung</string>
+    <string name="wiz_family">Familie</string>
+    <string name="wiz_account">Erstes Konto</string>
+    <string name="wiz_categories">Kategorien</string>
+    <string name="wiz_permissions">Berechtigungen</string>
+    <string name="wiz_security">Sicherheit</string>
+    <string name="wiz_done">Fertig</string>
+    <string name="wiz_welcome_text">Ihr persönlicher &amp; familiärer Buchhalter. Alles funktioniert offline; eine sichere Synchronisierungswarteschlange ist bereit.</string>
+    <string name="wiz_lang_text">Wählen Sie die Sprache (jederzeit in Einstellungen änderbar).</string>
+    <string name="wiz_currency_text">Wählen Sie die Basiswährung. Kurse werden manuell erfasst; historische Kurse bleiben fest.</string>
+    <string name="wiz_currency_hint">Beliebig viele Währungen können später hinzugefügt werden.</string>
+    <string name="wiz_categories_text">Umfangreiche Alltagskategorien sind vorinstalliert. Nicht benötigte deaktivieren.</string>
+    <string name="wiz_security_text">Optional: App mit PIN schützen. Biometrie später aktivierbar.</string>
+    <string name="wiz_done_text">Alles bereit! Später in den Einstellungen jederzeit änderbar.</string>
+    <string name="wiz_done_note">Tipp: Regeln für iranische Bank-SMS sind vorinstalliert und editierbar.</string>
+
+    <string name="back">Zurück</string>
+    <string name="next">Weiter</string>
+    <string name="skip">Überspringen</string>
+    <string name="finish">Starten</string>
+    <string name="add">Hinzufügen</string>
+    <string name="granted">Erteilt</string>
+    <string name="allow">Erlauben</string>
+    <string name="open_settings">App-Einstellungen</string>
+
+    <string name="family_name">Familienname</string>
+    <string name="add_member">Mitglied hinzufügen</string>
+    <string name="role_owner">Eigentümer</string>
+    <string name="role_admin">Admin</string>
+    <string name="role_finance">Finanzmanager</string>
+    <string name="role_readonly">Nur lesen</string>
+    <string name="role_member">Mitglied</string>
+    <string name="acc_name">Kontoname</string>
+    <string name="acc_type">Kontotyp</string>
+    <string name="acc_cash">Bargeld</string>
+    <string name="acc_bank">Bank</string>
+    <string name="acc_card">Karte</string>
+    <string name="acc_card_last4">Letzte 4 Kartenziffern</string>
+    <string name="opening_balance">Anfangssaldo</string>
+
+    <string name="perm_sms_title">Bank-SMS lesen</string>
+    <string name="perm_sms_desc">Erkennt Ein-/Auszahlungen iranischer Banken automatisch. Regeln editierbar; jede Bank aus jedem Land hinzufügbar.</string>
+    <string name="perm_cal_title">Kalender-Sync</string>
+    <string name="perm_cal_desc">Fälligkeiten (Raten, Schecks, Wiederholungen) in den OS-Kalender schreiben.</string>
+    <string name="perm_contacts_title">Kontakte</string>
+    <string name="perm_contacts_desc">Geschäftspartner mit Phone-Kontakten verknüpfen.</string>
+
+    <string name="pin_new">Neue PIN (4–8 Ziffern)</string>
+    <string name="pin_repeat">PIN wiederholen</string>
+    <string name="pin_save">PIN speichern</string>
+    <string name="pin_saved">PIN gespeichert ✔</string>
+    <string name="pin_mismatch">PINs stimmen nicht überein</string>
+</resources>

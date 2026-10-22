@@ -1,0 +1,5 @@
+-keep class com.divan.app.core.db.entity.** { *; }
+-keep class com.divan.app.core.sync.** { *; }
+-keepattributes *Annotation*
+-dontwarn okhttp3.**
+-dontwarn okio.**

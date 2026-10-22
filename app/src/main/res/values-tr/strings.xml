@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Divan</string>
+
+    <string name="widget_quick_expense">Hızlı kayıt</string>
+    <string name="widget_quick_expense_desc">Ana ekrandan gider / gelir / transfer</string>
+    <string name="widget_balance">Bakiye</string>
+    <string name="widget_balance_desc">Toplam bakiye ve ay özeti</string>
+
+    <string name="notif_sms_title">Banka işlemi algılandı</string>
+
+    <string name="wiz_welcome">Hoş geldiniz</string>
+    <string name="wiz_lang">Dil</string>
+    <string name="wiz_currency">Para birimi</string>
+    <string name="wiz_family">Aile</string>
+    <string name="wiz_account">İlk hesap</string>
+    <string name="wiz_categories">Kategoriler</string>
+    <string name="wiz_permissions">İzinler</string>
+    <string name="wiz_security">Güvenlik</string>
+    <string name="wiz_done">Hazır</string>
+    <string name="wiz_welcome_text">Kişisel ve aile muhasebeniz. Her şey çevrimdışı çalışır; güvenli senkron kuyruğu hazır.</string>
+    <string name="wiz_lang_text">Arayüz dilini seçin (Ayarlar\'dan her zaman değiştirilebilir).</string>
+    <string name="wiz_currency_text">Temel para birimini seçin. Kurlar elle girilir; geçmiş kurlar sabit kalır.</string>
+    <string name="wiz_currency_hint">Sonra sınırsız para birimi ekleyebilirsiniz.</string>
+    <string name="wiz_categories_text">Kapsamlı yaşam kategorileri hazır. Gereksizleri kapatın.</string>
+    <string name="wiz_security_text">İsteğe bağlı: Uygulamayı PIN ile koruyun. Biyometri sonra açılabilir.</string>
+    <string name="wiz_done_text">Her şey hazır! Ayarlar\'dan istediğiniz zaman değiştirin.</string>
+    <string name="wiz_done_note">İpucu: İran bankası SMS kuralları hazır ve düzenlenebilir.</string>
+
+    <string name="back">Geri</string>
+    <string name="next">İleri</string>
+    <string name="skip">Atla</string>
+    <string name="finish">Başlat</string>
+    <string name="add">Ekle</string>
+    <string name="granted">Verildi</string>
+    <string name="allow">İzin ver</string>
+    <string name="open_settings">Uygulama ayarları</string>
+
+    <string name="family_name">Aile adı</string>
+    <string name="add_member">Üye ekle</string>
+    <string name="role_owner">Sahip</string>
+    <string name="role_admin">Yönetici</string>
+    <string name="role_finance">Finans yöneticisi</string>
+    <string name="role_readonly">Salt okunur</string>
+    <string name="role_member">Üye</string>
+    <string name="acc_name">Hesap adı</string>
+    <string name="acc_type">Hesap türü</string>
+    <string name="acc_cash">Nakit</string>
+    <string name="acc_bank">Banka</string>
+    <string name="acc_card">Kart</string>
+    <string name="acc_card_last4">Kartın son 4 hanesi</string>
+    <string name="opening_balance">Açılış bakiyesi</string>
+
+    <string name="perm_sms_title">Banka SMS okuma</string>
+    <string name="perm_sms_desc">İran bankalarının giriş/çıkışlarını otomatik algılar. Kurallar düzenlenebilir; her ülkenin bankası eklenebilir.</string>
+    <string name="perm_cal_title">Takvim senkronu</string>
+    <string name="perm_cal_desc">Taksit, çek ve periyodik ödeme tarihlerini OS takvimine yazar.</string>
+    <string name="perm_contacts_title">Kişiler</string>
+    <string name="perm_contacts_desc">İş ortaklarını telefon rehberine bağlayın.</string>
+
+    <string name="pin_new">Yeni PIN (4–8 hane)</string>
+    <string name="pin_repeat">PIN tekrar</string>
+    <string name="pin_save">PIN kaydet</string>
+    <string name="pin_saved">PIN kaydedildi ✔</string>
+    <string name="pin_mismatch">PIN\'ler eşleşmiyor</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Divan watch launcher icon -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group android:scaleX="0.6" android:scaleY="0.6" android:translateX="21.6" android:translateY="21.6">
+        <path
+            android:fillColor="#D9B25F"
+            android:pathData="M54,14 L94,48 L86,58 L54,30 L22,58 L14,48 Z" />
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M26,56 L54,32 L82,56 L82,92 L64,92 L64,70 L44,70 L44,92 L26,92 Z" />
+    </group>
+</vector>
